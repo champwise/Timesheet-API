@@ -2,6 +2,7 @@
 
     // get access to database
     include_once "common/base.php";
+    header("Access-Control-Allow-Origin: *");
 
     //  If login form has been submitted
     if(isset($_POST['employee_id']) && isset($_POST['password']) && isset($_POST['first_name']) && isset($_POST['last_name']) ){
@@ -11,7 +12,7 @@
             // Create new user object
         $user = new user($db);
             // If login method successful: set session variables and redirect to planner.php page
-        echo json_encode($user->logIn($_POST['employee_id'], $_POST['password'], $_POST['first_name'], $_POST['last_name']));
+        echo json_encode($user->createAccount($_POST['employee_id'], $_POST['password'], $_POST['first_name'], $_POST['last_name']));
     }
 
 
